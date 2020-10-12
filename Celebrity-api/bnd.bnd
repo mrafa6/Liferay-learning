@@ -1,0 +1,10 @@
+Bundle-Name: Celebrity-api
+Bundle-SymbolicName: com.rafa.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.rafa.exception,\
+	com.rafa.model,\
+	com.rafa.service,\
+	com.rafa.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../Celebrity-service/service.xml
