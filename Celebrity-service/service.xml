@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_2_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.rafa">
+	<namespace>roaster</namespace>
+	<entity name="Celebrity" local-service="true" remote-service="false"
+		table="celebrityData">
+
+
+		<!-- PK fields -->
+		<column name="celebrityId" primary="true" type="long"></column>
+
+		<!-- Group instance -->
+
+		<!-- Audit fields -->
+        <column name="name" type="String"></column>
+        <column name="profession" type="String"></column>
+        <column name="nickName" type="String"></column>
+        <column name="country" type="String"></column>
+	</entity>
+</service-builder>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.rafa.model.Celebrity">
+		<field name="celebrityId" type="long" />
+		<field name="name" type="String" />
+		<field name="profession" type="String" />
+		<field name="nickName" type="String" />
+		<field name="country" type="String" />
+	</model>
+</model-hints>
