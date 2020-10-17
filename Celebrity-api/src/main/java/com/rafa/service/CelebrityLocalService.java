@@ -175,6 +175,12 @@ public interface CelebrityLocalService
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Celebrity fetchCelebrity(long celebrityId);
 
+	public List<Celebrity> findByCountry(String country);
+
+	public List<Celebrity> findByFirstLetter(String letter);
+
+	public List<Celebrity> findByProfession(String profession);
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 

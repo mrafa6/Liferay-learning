@@ -39,6 +39,7 @@ import com.liferay.portal.kernel.util.PortalUtil;
 
 import com.rafa.model.Celebrity;
 import com.rafa.service.CelebrityLocalService;
+import com.rafa.service.persistence.CelebrityFinder;
 import com.rafa.service.persistence.CelebrityPersistence;
 
 import java.io.Serializable;
@@ -383,6 +384,9 @@ public abstract class CelebrityLocalServiceBaseImpl
 
 	@Reference
 	protected CelebrityPersistence celebrityPersistence;
+
+	@Reference
+	protected CelebrityFinder celebrityFinder;
 
 	@Reference
 	protected com.liferay.counter.kernel.service.CounterLocalService

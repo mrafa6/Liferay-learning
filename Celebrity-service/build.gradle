@@ -7,6 +7,9 @@ dependencies {
 	compileOnly group: "org.osgi", name: "org.osgi.core"
 	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
 	compileOnly project(":modules:Celebrity:Celebrity-api")
+	// https://mvnrepository.com/artifact/com.liferay/com.liferay.portal.dao.orm.custom.sql.api
+	compile group: 'com.liferay', name: 'com.liferay.portal.dao.orm.custom.sql.api', version: '1.0.0'
+
 }
 
 buildService {

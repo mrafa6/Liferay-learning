@@ -15,8 +15,11 @@
 package com.rafa.service.impl;
 
 import com.liferay.portal.aop.AopService;
-
+import com.rafa.model.Celebrity;
 import com.rafa.service.base.CelebrityLocalServiceBaseImpl;
+import com.rafa.service.persistence.CelebrityPersistence;
+
+import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -44,4 +47,18 @@ public class CelebrityLocalServiceImpl extends CelebrityLocalServiceBaseImpl {
 	 *
 	 * Never reference this class directly. Use <code>com.rafa.service.CelebrityLocalService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>com.rafa.service.CelebrityLocalServiceUtil</code>.
 	 */
+	
+	public List<Celebrity> findByProfession(String profession){
+		return celebrityPersistence.findByoccupation(profession);
+		
+	}
+	
+	public List<Celebrity> findByCountry(String country){
+		return celebrityPersistence.findByCountry(country);
+	}
+	
+	public List<Celebrity> findByFirstLetter(String letter){
+		return celebrityFinder.getCelebrityByFirstLetter(letter);
+		
+	}
 }
