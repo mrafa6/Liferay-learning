@@ -193,6 +193,27 @@ public class CelebrityLocalServiceWrapper
 	}
 
 	@Override
+	public java.util.List<com.rafa.model.Celebrity> findByCountry(
+		String country) {
+
+		return _celebrityLocalService.findByCountry(country);
+	}
+
+	@Override
+	public java.util.List<com.rafa.model.Celebrity> findByFirstLetter(
+		String letter) {
+
+		return _celebrityLocalService.findByFirstLetter(letter);
+	}
+
+	@Override
+	public java.util.List<com.rafa.model.Celebrity> findByProfession(
+		String profession) {
+
+		return _celebrityLocalService.findByProfession(profession);
+	}
+
+	@Override
 	public com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

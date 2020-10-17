@@ -4,7 +4,26 @@
 
 <portlet:actionURL name="viewDetails" var="viewCelebrityURL"  />
 
+<portlet:actionURL name="searchCelebrity" var="searchCelebrityURL"  />
 
+
+<div class="top-div">
+	<input type="text" class="search-box" name="q" id="q" placeholder="Search"/>
+	<select name="criteria" id="search-type">
+		  <option value="none">Any</option>
+		  <option value="country">Country</option>
+		  <option value="profession">Profession</option>
+		  <option value="name">Name</option>
+	</select>
+	<input type="button" class="search-btn" Value="Search" onclick="searchCelebrity()"/>
+</div>
+
+<div class="letter-div">
+
+
+</div>
+
+<div class="main-div">
 <liferay-ui:success key="deletedCelebrity" message="record.deleted"/>
 <div class="records-count">Total Records ${celbCount}</div>
 <liferay-ui:header title="celebrity.list.header"/>
@@ -28,7 +47,7 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach items="${celebrities}" var="celebrity"  varStatus="status" begin="0" end="9">
+			  	<c:forEach items="${celebrities}" var="celebrity"  varStatus="status">
 	   				<tr>
 				      <th scope="row"><a href="javascript:void(0)" Class="view-celebrity" onClick="viewDetails('${celebrity.getCelebrityId()}')">${celebrity.getName()}</a></th>
 				      <td>${celebrity.getProfession()}</td>
@@ -42,6 +61,7 @@
 		</c:if>
 	</div>
 </form>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -68,5 +88,63 @@ function viewDetails(id){
 	location.href = url;
 }
 
+function searchCelebrity(){
+	var url = '${searchCelebrityURL}';
+	var keyword = $("#q").val();
+	var filter = $("[name='criteria']").val();
+	console.log('keyword...'+keyword+'.....filter....'+filter);
+	url = url + '&q=' + keyword + '&findBy='+filter;
+	location.href = url;
+}
+
 
 </script>
+
+<style type="text/css">
+
+input.search-box {
+    margin-left: 120px;
+    display: flex;
+    width: 35%;
+    border-radius: 15px 0 0 15px;
+    padding: 5px 15px;
+    border: 2px tomato solid;
+    float: left;
+    border-right: 1px dashed tomato;
+}
+
+input.search-btn{
+    border: tomato;
+    width: 12%;
+    border-radius: 0 15px 15px 0;
+    color: #FFFFFF;
+    background: tomato;
+    height: 38px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    font-size: larger;
+}
+
+div.top-div{
+	margin: 10px;
+}
+
+div.main-div{
+
+}
+
+select#search-type {
+    margin: 0px;
+    float: left;
+    height: 38px;
+    width: 110px;
+    border-top: 2px solid tomato;
+    border-bottom: 2px solid tomato;
+    border-right: none;
+    border-left: none;
+    padding: 0 5px;
+}
+
+
+
+</style>
