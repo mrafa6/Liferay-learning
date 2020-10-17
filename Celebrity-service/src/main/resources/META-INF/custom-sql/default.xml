@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<custom-sql>
+	<sql id="getCelebrityByLetter">
+		<![CDATA[
+			SELECT * FROM celebritydata c where c.name like ?
+		]]>
+	</sql>
+
+</custom-sql>

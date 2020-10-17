@@ -1,10 +1,9 @@
 <%@ include file="init.jsp" %>
-<portlet:actionURL name="pageNavigate" var="pageNavigationURL" />
 
 <portlet:renderURL var="pageURL" />
 
 <%-- Current page = ${currPage}<br> --%>
-<div class="pagination">
+<div class="${pageCount eq 1 ? 'hidden' : 'pagination'}  ">
 	<input type="button" class="${currPage eq 1 ? 'hidden' : 'btn-secondary' }" id="prepage_Previousvious" onclick="goToPage(${currPage - 1})" value="PREV" />
 	<c:forEach var="j" begin="1" end="${pageCount}">
 	<input type="button" class="${currPage eq j ? 'btn-primary' : 'btn-secondary' }" id="page_${j}" onclick="goToPage(${j})" value="${j}" />

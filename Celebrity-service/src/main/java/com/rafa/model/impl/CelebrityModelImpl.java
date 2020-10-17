@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.model.impl.BaseModelImpl;
 import com.liferay.portal.kernel.service.ServiceContext;
+import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
 import com.rafa.model.Celebrity;
@@ -98,6 +99,12 @@ public class CelebrityModelImpl
 	public static final String SESSION_FACTORY = "liferaySessionFactory";
 
 	public static final String TX_MANAGER = "liferayTransactionManager";
+
+	public static final long COUNTRY_COLUMN_BITMASK = 1L;
+
+	public static final long PROFESSION_COLUMN_BITMASK = 2L;
+
+	public static final long CELEBRITYID_COLUMN_BITMASK = 4L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -292,7 +299,17 @@ public class CelebrityModelImpl
 
 	@Override
 	public void setProfession(String profession) {
+		_columnBitmask |= PROFESSION_COLUMN_BITMASK;
+
+		if (_originalProfession == null) {
+			_originalProfession = _profession;
+		}
+
 		_profession = profession;
+	}
+
+	public String getOriginalProfession() {
+		return GetterUtil.getString(_originalProfession);
 	}
 
 	@Override
@@ -322,7 +339,21 @@ public class CelebrityModelImpl
 
 	@Override
 	public void setCountry(String country) {
+		_columnBitmask |= COUNTRY_COLUMN_BITMASK;
+
+		if (_originalCountry == null) {
+			_originalCountry = _country;
+		}
+
 		_country = country;
+	}
+
+	public String getOriginalCountry() {
+		return GetterUtil.getString(_originalCountry);
+	}
+
+	public long getColumnBitmask() {
+		return _columnBitmask;
 	}
 
 	@Override
@@ -422,6 +453,13 @@ public class CelebrityModelImpl
 
 	@Override
 	public void resetOriginalValues() {
+		CelebrityModelImpl celebrityModelImpl = this;
+
+		celebrityModelImpl._originalProfession = celebrityModelImpl._profession;
+
+		celebrityModelImpl._originalCountry = celebrityModelImpl._country;
+
+		celebrityModelImpl._columnBitmask = 0;
 	}
 
 	@Override
@@ -541,8 +579,11 @@ public class CelebrityModelImpl
 	private long _celebrityId;
 	private String _name;
 	private String _profession;
+	private String _originalProfession;
 	private String _nickName;
 	private String _country;
+	private String _originalCountry;
+	private long _columnBitmask;
 	private Celebrity _escapedModel;
 
 }

@@ -187,6 +187,24 @@ public class CelebrityLocalServiceUtil {
 		return getService().fetchCelebrity(celebrityId);
 	}
 
+	public static java.util.List<com.rafa.model.Celebrity> findByCountry(
+		String country) {
+
+		return getService().findByCountry(country);
+	}
+
+	public static java.util.List<com.rafa.model.Celebrity> findByFirstLetter(
+		String letter) {
+
+		return getService().findByFirstLetter(letter);
+	}
+
+	public static java.util.List<com.rafa.model.Celebrity> findByProfession(
+		String profession) {
+
+		return getService().findByProfession(profession);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery
 		getActionableDynamicQuery() {
 

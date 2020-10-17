@@ -17,5 +17,14 @@
         <column name="profession" type="String"></column>
         <column name="nickName" type="String"></column>
         <column name="country" type="String"></column>
+        
+        <!-- Finder Methods -->
+        <finder return-type="Collection" name="occupation">
+        	<finder-column name="profession"></finder-column>
+        </finder>
+        
+        <finder return-type="Collection" name="Country">
+        	<finder-column name="country"></finder-column>
+        </finder>
 	</entity>
 </service-builder>
